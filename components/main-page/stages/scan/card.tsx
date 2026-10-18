@@ -108,14 +108,23 @@ const ScanCard = () => {
             </div>
           )}
         </CardContent>
-        <CardFooter className="p-4 absolute bottom-0 right-0">
-          <Button
-            variant="outline"
-            className={cn("w-full transition", currentScanFace !== null && "opacity-0 pointer-events-none")}
-            onClick={onSolveClick}
-          >
-            开始还原
-          </Button>
+        <CardFooter className="p-4 absolute bottom-0 right-0 gap-2">
+          {currentScanFace === null && (
+            <Button variant="outline" className="w-full transition" onClick={onSolveClick}>
+              开始还原
+            </Button>
+          )}
+          {currentScanFace !== null && isConfirmingColors && (
+            <Button
+              variant="outline"
+              onClick={() => {
+                setIsConfirmingColors(false);
+                updateStore({ isScanRefreshing: true });
+              }}
+            >
+              重新扫描
+            </Button>
+          )}
           {currentScanFace !== null && (
             <Button disabled={disabledScanConfirmBtn()} onClick={mainCardBtnClick}>
               {isConfirmingColors ? "确认" : "扫描"}
