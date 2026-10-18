@@ -4,8 +4,8 @@ import React from "react";
 import { motion } from "framer-motion";
 
 const MainPageHeading = () => {
-  const text = ["Scan.", "Solve.", "Be proud."];
-  const subText = ["Scan your cube with an", "smartphone and get step-by-step", "solution."];
+  const text = ["扫描。", "还原。", "收获成就。"];
+  const subText = ["用手机扫描魔方，", "跟随分步指引，", "轻松完成还原。"];
 
   return (
     <div>

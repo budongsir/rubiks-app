@@ -3,22 +3,22 @@ import * as THREE from "three";
 
 export const cube_sides: ICubeSide[] = ["U", "R", "F", "D", "L", "B"];
 export const cubeSidesFull: Record<ICubeSide, string> = {
-  U: "Up",
-  R: "Right",
-  F: "Front",
-  D: "Down",
-  L: "Left",
-  B: "Back",
-  X: "null",
+  U: "上",
+  R: "右",
+  F: "前",
+  D: "下",
+  L: "左",
+  B: "后",
+  X: "未知",
 };
 export const cubeSidesNamedColors: Record<ICubeSide, string> = {
-  U: "Yellow",
-  R: "Green",
-  F: "Red",
-  D: "White",
-  L: "Blue",
-  B: "Orange",
-  X: "null",
+  U: "黄色",
+  R: "绿色",
+  F: "红色",
+  D: "白色",
+  L: "蓝色",
+  B: "橙色",
+  X: "未知",
 };
 
 export const cube_sides_scan: ICubeSide[] = ["F", "U", "R", "D", "L", "B"];

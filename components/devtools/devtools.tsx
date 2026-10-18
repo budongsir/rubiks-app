@@ -40,39 +40,46 @@ export function CubeDevTools() {
     devScanPreviewShow: state.devScanPreviewShow,
     isScanRefreshGlow: state.isScanRefreshGlow,
   }));
+  const toggleLabels: Record<keyof typeof toggles, string> = {
+    scanReversed: "扫描镜像",
+    previewReversed: "预览镜像",
+    isScanRefreshing: "实时扫描",
+    devScanPreviewShow: "显示扫描预览",
+    isScanRefreshGlow: "扫描刷新高亮",
+  };
   const [move, setMove] = useState<ICubeMoves>("F");
 
   return (
     <Dialog>
       <DialogTrigger asChild>
         <Button variant="outline" className="fixed left-4 bottom-4">
-          DevTools
+          开发工具
         </Button>
       </DialogTrigger>
       <DialogContent className="sm:max-w-[425px] max-h-[30rem] overflow-y-scroll">
         <DialogHeader>
-          <DialogTitle>Devtools</DialogTitle>
+          <DialogTitle>开发工具</DialogTitle>
         </DialogHeader>
         <div className="grid gap-4 py-4">
           <div className="grid grid-cols-4 items-center gap-4">
-            <Label className="text-right">Cube</Label>
+            <Label className="text-right">魔方</Label>
             <Input className="col-span-2" value={cube} onChange={(e) => updateCube(e.target.value, true)} />
             <Button variant="outline" onClick={() => updateCube(solved_cube, true)}>
-              Set solved
+              设为已还原
             </Button>
           </div>
           <div className="grid grid-cols-4 items-center gap-4">
-            <Label className="text-right">Highlight</Label>
+            <Label className="text-right">高亮面</Label>
             <Select
               onValueChange={(val) => updateStore({ highlight: val === "none" ? undefined : (val as ICubeSide) })}
               value={highlight}
             >
               <SelectTrigger className="w-[180px]">
-                <SelectValue placeholder="Select a Highlight" />
+                <SelectValue placeholder="选择高亮面" />
               </SelectTrigger>
               <SelectContent>
                 <SelectGroup>
-                  <SelectItem value="none">None</SelectItem>
+                  <SelectItem value="none">无</SelectItem>
                   {cube_sides.map((side) => (
                     <SelectItem value={side} key={`dev-select-highlight-${side}`}>
                       {side}
@@ -90,7 +97,7 @@ export function CubeDevTools() {
                 pressed={value}
                 onClick={() => updateStore({ [key]: !value })}
               >
-                {key}
+                {toggleLabels[key as keyof typeof toggles]}
               </Toggle>
             ))}
           </div>
@@ -101,18 +108,18 @@ export function CubeDevTools() {
                 console.log({ solution: solveCube(cube) });
               }}
             >
-              Solve cube
+              求解魔方
             </Button>
           </div>
           <div className="grid grid-cols-4 items-center gap-4">
-            <Label className="text-right">RotateSide</Label>
+            <Label className="text-right">转动面</Label>
             <Select onValueChange={(val) => setMove(val as ICubeMoves)} value={move}>
               <SelectTrigger>
-                <SelectValue placeholder="Select a side" />
+                <SelectValue placeholder="选择转动面" />
               </SelectTrigger>
               <SelectContent>
                 <SelectGroup>
-                  <SelectItem value="none">None</SelectItem>
+                  <SelectItem value="none">无</SelectItem>
                   {cube_moves.map((m) => (
                     <SelectItem value={m} key={`dev-select-highlight-${m}`}>
                       {m}
@@ -122,17 +129,17 @@ export function CubeDevTools() {
               </SelectContent>
             </Select>
             <Button type="button" variant="secondary" onClick={() => rotateCube(move)}>
-              Rotate
+              转动
             </Button>
             <Button type="button" variant="secondary" onClick={() => rotateCube2Part(move)}>
-              Rotate 2part
+              分两段转动
             </Button>
           </div>
           <div>
-            <Button onClick={() => toggleCubeRotating()}>Toggle rotating cube</Button>
+            <Button onClick={() => toggleCubeRotating()}>切换自动旋转</Button>
           </div>
           <div className="grid grid-cols-4 items-center gap-4">
-            <Label className="text-right">Cube left</Label>
+            <Label className="text-right">水平位置</Label>
             <Input
               className="col-span-2"
               value={cubeLeft}
@@ -140,7 +147,7 @@ export function CubeDevTools() {
             />
           </div>
           <div className="grid grid-cols-4 items-center gap-4">
-            <Label className="text-right">Cube top</Label>
+            <Label className="text-right">垂直位置</Label>
             <Input
               className="col-span-2"
               value={cubeTop}
@@ -148,7 +155,7 @@ export function CubeDevTools() {
             />
           </div>
           <div className="grid grid-cols-4 items-center gap-4">
-            <Label className="text-right">Cube scale</Label>
+            <Label className="text-right">缩放比例</Label>
             <Input
               className="col-span-2"
               value={cubeScale}
@@ -163,14 +170,14 @@ export function CubeDevTools() {
                 updateStore({ currentAppStage: "solve" });
               }}
             >
-              Solving step
+              进入还原步骤
             </Button>
           </div>
         </div>
         <DialogFooter className="sm:justify-start">
           <DialogClose asChild>
             <Button type="button" variant="secondary">
-              Close
+              关闭
             </Button>
           </DialogClose>
         </DialogFooter>

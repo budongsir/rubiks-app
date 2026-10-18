@@ -32,9 +32,9 @@ const InitStage = () => {
   };
 
   const getMainBtnText = () => {
-    if (currentAppStage === "homepage") return "Continue";
-    if (seconds > 0) return `Scan (${seconds})`;
-    return "Scan";
+    if (currentAppStage === "homepage") return "继续";
+    if (seconds > 0) return `扫描（${seconds}）`;
+    return "扫描";
   };
 
   return (

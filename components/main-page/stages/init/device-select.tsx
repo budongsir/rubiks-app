@@ -32,8 +32,8 @@ export function DeviceSelect() {
       } catch (err) {
         toast({
           variant: "destructive",
-          title: "Camera Permission Denied",
-          description: "Please allow camera access to use this app.",
+          title: "未获得摄像头权限",
+          description: "请允许访问摄像头，以便扫描魔方。",
         });
       }
     };
@@ -44,11 +44,11 @@ export function DeviceSelect() {
   return (
     <Select value={deviceId} onValueChange={(id) => updateStore({ deviceId: id })}>
       <SelectTrigger className="w-[200px]">
-        <SelectValue placeholder="Select a camera device" />
+        <SelectValue placeholder="选择摄像头" />
       </SelectTrigger>
       <SelectContent>
         <SelectGroup>
-          <SelectLabel>Select a camera device</SelectLabel>
+          <SelectLabel>选择摄像头</SelectLabel>
           {devices.map((device) => (
             <SelectItem key={`device-sel-${device.id}`} value={device.id}>
               {device.label}

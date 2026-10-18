@@ -18,7 +18,7 @@ const DevScanResultPreview = () => {
         className="w-[10rem]"
         variant="outline"
       >
-        {previewRefresh ? "Pause" : "Unpause"}
+        {previewRefresh ? "暂停" : "继续"}
       </Toggle>
       <div className="grid grid-cols-3 w-[10rem] h-[10rem] grid-rows-3 border border-violet-600">
         {lastScanResult?.map(({ destSide, scanData, id }) => (

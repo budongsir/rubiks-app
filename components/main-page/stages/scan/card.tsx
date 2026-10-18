@@ -63,7 +63,7 @@ const ScanCard = () => {
               currentScanFace === null && "opacity-0"
             )}
           >
-            {isConfirmingColors ? "Confirm" : "Show"}{" "}
+            {isConfirmingColors ? "确认" : "请展示"}{" "}
             <span
               className="text-lg"
               style={{
@@ -77,11 +77,11 @@ const ScanCard = () => {
                 ? cubeSidesFull[cube_sides_scan[currentScanFace]]
                 : cubeSidesFull.F}{" "}
             </span>{" "}
-            face
+            面
           </CardTitle>
           {!isConfirmingColors && currentScanFace !== null && currentScanFace !== -1 && (
             <CardDescription className="!mt-0 absolute top-full">
-              Center color -{" "}
+              中心颜色：{" "}
               <span
                 style={{
                   color: `#${colorMapThree[cube_sides_scan[currentScanFace]].getHexString()}`,
@@ -114,11 +114,11 @@ const ScanCard = () => {
             className={cn("w-full transition", currentScanFace !== null && "opacity-0 pointer-events-none")}
             onClick={onSolveClick}
           >
-            Solve
+            开始还原
           </Button>
           {currentScanFace !== null && (
             <Button disabled={disabledScanConfirmBtn()} onClick={mainCardBtnClick}>
-              {isConfirmingColors ? "Confirm" : "Scan"}
+              {isConfirmingColors ? "确认" : "扫描"}
             </Button>
           )}
         </CardFooter>

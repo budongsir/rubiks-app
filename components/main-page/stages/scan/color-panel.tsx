@@ -41,7 +41,7 @@ const ScanColorPanel = () => {
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
     >
-      <span className="text-sm text-muted-foreground">Tap color to correct it</span>
+      <span className="text-sm text-muted-foreground">点击色块可修正颜色</span>
       <div className="grid grid-cols-3 grid-rows-3 gap-2 mt-2">
         {lastScanResult.map(({ destSide, id }, i) => (
           <Popover key={`color-pan-${id}`}>

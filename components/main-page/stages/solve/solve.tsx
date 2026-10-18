@@ -25,8 +25,8 @@ const SolveCubeStage = () => {
     } catch (error) {
       toast({
         variant: "destructive",
-        description: "Failed to generate cube solution - cube scan may be incorrect",
-        title: "Error",
+        description: "无法生成还原步骤，扫描结果可能有误，请检查魔方各面的颜色。",
+        title: "还原失败",
         duration: Infinity,
       });
     }
@@ -36,7 +36,7 @@ const SolveCubeStage = () => {
     <div className="w-full h-full flex justify-center items-center flex-col overflow-hidden">
       {cubeSolutionStep !== null && (
         <h1 className="text-muted-foreground grid grid-cols-3 w-[10rem] items-end">
-          <span className="text-lg leading-none text-right">move</span>
+          <span className="text-lg leading-none text-right">转动</span>
           <span className="text-foreground text-3xl leading-none text-center">{cubeSolution[cubeSolutionStep]}</span>
           <span className="text-xs leading-none">
             {cubeSolutionStep} / {cubeSolution.length}
@@ -51,7 +51,7 @@ const SolveCubeStage = () => {
       </div>
       {cubeSolutionStep !== null && (
         <Button onClick={() => nextCubeSolveStep()} style={{ width: `${THREE_WIDTH - 160}px` }}>
-          Next move
+          下一步
         </Button>
       )}
     </div>

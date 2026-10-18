@@ -11,8 +11,8 @@ const fontSans = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Rubik's 3D Solver",
-  description: "Rubik's Cube Solver - Scan your cube with an smartphone and get a simple step-by-step 3D explanation.",
+  title: "魔方 3D 还原助手",
+  description: "用手机扫描魔方，获取清晰易懂的 3D 分步还原指引。",
   authors: [{ name: "Dawid Krasowski", url: "https://github.com/dejwi" }],
 };
 
@@ -22,7 +22,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="dark">
+    <html lang="zh-CN" className="dark">
       <body className={cn("bg-background font-sans antialiased", fontSans.variable)}>
         {children}
         <Toaster />
